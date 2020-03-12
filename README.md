@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://es.wikipedia.org/wiki/Archivo:.NET_Core_Logo.svg" width="100" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/.NET_Core_Logo.svg" width="100" alt="Nest Logo" /></a>
 </p>
 
 # REST API
