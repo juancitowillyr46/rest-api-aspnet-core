@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-
+using BCrypt.Net;
 namespace CommandAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -31,6 +31,25 @@ namespace CommandAPI.Controllers
             } else {
                 return Unauthorized();
             }   
+        }
+
+        [HttpPost]
+        [Route("register")]
+        [AllowAnonymous]
+        public IActionResult Register()
+        {
+            var salt = BCrypt.Net.BCrypt.GenerateSalt(12);
+            var password = BCrypt.Net.BCrypt.HashPassword("juan123456", salt);
+            return Ok(password);
+        }
+
+        [HttpPost]
+        [Route("verify")]
+        [AllowAnonymous]
+        public IActionResult Verify(UsuarioLogin usuarioLogin)
+        {
+            var passwordr = BCrypt.Net.BCrypt.Verify("juan123456", usuarioLogin.Password);
+            return Ok(passwordr);
         }
 
         public UsuarioInfo AutenticarUsuarioAsync(string usuario, string password)
